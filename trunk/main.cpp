@@ -3,15 +3,15 @@
 /// Universidade Federal de São Carlos
 /// Departamento de Computação
 ///
-/// 
+///
 ///	Organização e Recuperação da Informação
 /// Trabalho 2: Implementação de Árvore B+
 ///
 ///	grupo:
-///	 Guilherme de Melo Barsote, RA
+///	 Guilherme de Mello Barsoti, RA 386090
 ///	 João Celso Santos de Oliveira, RA 379247
 ///	 Willian Fenando Mendes, RA
-///	
+///
 ///	Novembro de 2011
 ///
 ////////////////////////////////////
@@ -25,10 +25,10 @@
 using namespace std;
 
 int main(){
-	
+
 	NUMERO n(200);
-	
+
 	cout << n.getNumero() << endl << endl;
-	
+
 	return 0;
 }
