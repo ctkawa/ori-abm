@@ -1,30 +1,17 @@
 #include "arvoreBMais.h"
 
-ARVOREBMAIS::ARVOREBMAIS(unsigned int grau){
-	
-	if(grau < 2){
-		this->grau = 2;
-		cout << "Ajustando árvore para grau mínimo 2.";
-	} else {
-		this->grau = grau;
-	}
-	
-	root = NULL;
+ARVOREBMAIS::ARVOREBMAIS(){
+	this->raiz.setRaiz(true);
 }
 
 bool ARVOREBMAIS::adicionar(NUMERO * numero){
-	long long int indice = numero->getNumero();
-	bool erro = false;
-	
-	// codigo para adicionar
-	
-	if (erro){
-		cout << "ERRO";
-		return false;
-	}
-	
-	return true;
+	bool erro;
+	cout << "adicionar entra ok\n";
+	this->raiz.adicionar(numero, &erro);
+	cout << "adicionar sai ok\n";
+	return erro;
 }
+
 
 bool ARVOREBMAIS::buscar(long long int indice, NUMERO * numero){
 	bool erro = false;
@@ -52,4 +39,14 @@ bool ARVOREBMAIS::remover(long long int indice, NUMERO * numero){
 	}
 	
 	return true;
+}
+
+void ARVOREBMAIS::imprimir(){
+	cout << "entrou raiz.imprimir\n";
+	this->raiz.imprimir(0);
+	cout <<  "saiu raiz imprimir\n";
+}
+
+ARVOREBMAIS::~ARVOREBMAIS(){
+	// implementar: delete todos os vetores recursivamente
 }

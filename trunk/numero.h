@@ -15,6 +15,7 @@ class NUMERO {
 		string observacao;
 	
 	public:
+		NUMERO();
 		NUMERO(long long int);
 		long long int setNumero(long long int);
 		long long int getNumero();

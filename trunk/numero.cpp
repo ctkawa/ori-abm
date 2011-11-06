@@ -1,5 +1,9 @@
 #include "numero.h"
 
+NUMERO::NUMERO(){
+	this->setNumero(0);
+}
+
 NUMERO::NUMERO(long long int numero){
 	this->setNumero(numero);
 }

@@ -1,4 +1,4 @@
 all:
-	g++ -c *.cpp
-	g++ *.o -o ori-abm
+	g++ -Wall -c *.cpp
+	g++ -Wall *.o -o ori-abm
 

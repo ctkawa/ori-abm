@@ -26,9 +26,19 @@ using namespace std;
 
 int main(){
 
-	NUMERO n(200);
-
-	cout << n.getNumero() << endl << endl;
-
+	ARVOREBMAIS arvore;
+	
+	NUMERO * n;
+	
+	for(int i=0; i<5; i++){
+		n = new NUMERO(i);
+		arvore.adicionar(n);
+		arvore.imprimir();
+		cout << "\n\n\n\n";
+	}
+	
+	
+	
+	
 	return 0;
 }
