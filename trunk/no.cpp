@@ -51,12 +51,15 @@ void NO::adicionar(NUMERO * numero, bool * erro){
 				if( this->no->vetorIndice[i] > numero->getNumero() ){
 					NO noFilho(this->no->vetorNo[i]);
 					
-					noFilho.adicionar(numero, erro);
-					
-					
-					if(*erro){
-						return;
+					if( noFilho->cabeMaisUm() ){
+						noFilho.adicionar(numero, erro);
+						if(*erro){
+							return;
+						}
+					} else {
+						this->divideFolha(i, numero, erro);
 					}
+					
 					mandouAdicionar = true;
 				}
 				i++;
@@ -254,6 +257,10 @@ void NO::setProximoNo(tipoNo * proximoNo){
 	this->no->vetorNo[0] = proximoNo;
 }
 
+tipoNo * NO::getProximoNo(){
+	return this->no->vetorNo[0];
+}
+
 long long int NO::getIndiceMinimo(){
 	if( this->no->contador > 0 ){
 		return this->no->vetorIndice[0];
@@ -301,5 +308,73 @@ void NO::imprimirRecuo(unsigned int recuo){
 	for(unsigned int i=0; i<recuo; i++){
 		cout << "\t";
 	}
+}
+
+void NO::divideFolha(unsigned int posicao, NUMERO * numero, bool * erro){
+	*erro = false;
+	tipoNo * no = this->vetorNo[posicao];
+	
+	NUMERO * vetNumero[ARVORE_GRAU];
+	
+	unsigned int iNo = 0;
+	unsigned int iAux = 0;
+	bool adicionado = false;
+	
+	cout << "criando vetor auxiliar\n";
+	cout << "contador = " << no->contador << " | ";
+	cout << "iAux = " << iAux << endl;
+	while( !(*erro) && iAux <= no->contador){
+		cout << "entrou no while" << endl;
+		if( !adicionado && numero->getNumero() < no->vetorIndice[iNo] ){
+			vetNumero[iAux] = numero;
+			iAux++;
+			adicionado = true;
+			cout << "adicionado novo numero: " << numero->getNumero() << endl;
+			
+		} else if ( numero->getNumero() == no->vetorIndice[iNo] ){
+			cout << "Erro: o numero já está na árvore\n";
+			*erro = true;
+			return;
+		} else {
+			vetNumero[iAux] = no->vetorNumero[iNo];
+			cout << "adicinado numero : " << no->vetorNumero[iNo]->getNumero() << endl;
+			iAux++;
+			iNo++;
+		}
+	}
+	
+	unsigned int iCorte = floor( (no->contador + 1)/2 );
+	
+	cout << "criando nos auxiliares\n";
+	NO noEsquerdo( this->getNovoNo(FOLHA) );
+	NO noDireito( this->getNovoNo(FOLHA) );
+	
+	iAux = 0;
+	while( iAux < no->contador + 1 ){
+		if( iAux < iCorte ){
+			cout << "adicinando " << vetNumero[iAux]->getNumero() << " a esquerda\n";
+			noEsquerdo.adicionar( vetNumero[iAux], erro );
+		} else {
+			cout << "adicinando " << vetNumero[iAux]->getNumero() << " a direita\n";
+			noDireito.adicionar( vetNumero[iAux], erro );
+		}
+		
+		if( *erro ){
+			noEsquerdo.deletarNo();
+			noDireito.deletarNo();
+			noPai.deletarNo();
+			return;
+		} else {
+			iAux++;
+		}
+	}
+	
+	noDireito.setProximoNo( noEsquerdo.getProximoNo() );
+	noEsquerdo.setProximoNo( noDireito.getNo() );
+	noPai.setFilhosRaiz(noEsquerdo.getNo(), noDireito.getIndiceMinimo(), noDireito.getNo());
+	
+	this->deletarNo();
+	this->no = noPai.getNo();
+	
 }
 

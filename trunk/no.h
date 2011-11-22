@@ -34,14 +34,17 @@ class NO{
 		bool eFolha();
 		bool eInterno();
 		void divideFolhaRaiz(NUMERO *, bool *);
+		void divideFolha(unsigned int, NUMERO *, bool *);
 		tipoNo * getNovoNo(NO_rotulo);
 		void deletarNo();
 		tipoNo * getNo();
 		void setProximoNo(tipoNo *);
+		tipoNo * getProximoNo();
 		long long int getIndiceMinimo();
 		void setFilhosRaiz(tipoNo *, long long int, tipoNo *);
 		void imprimir(unsigned int);
 		void imprimirRecuo(unsigned int);
+		
 };
 
 #endif

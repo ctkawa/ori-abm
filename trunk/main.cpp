@@ -30,7 +30,7 @@ int main(){
 	
 	NUMERO * n;
 	
-	for(int i=0; i<5; i++){
+	for(int i=0; i<8; i++){
 		n = new NUMERO(i);
 		arvore.adicionar(n);
 		arvore.imprimir();
