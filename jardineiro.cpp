@@ -66,6 +66,8 @@ void Jardineiro::MostrarBuscarElemento(){
 	// busca
 	cout << "Buscando chave na arvore..." << endl;
 	
+	this->arvore.buscar();
+	
 	// imprime resultado
 	cout << "Imprimindo resultado: <?resultado?>" << endl;
 	
@@ -89,6 +91,8 @@ void Jardineiro::MostrarBuscarIntervalo(){
 	// busca
 	cout << "Buscando o Chaves na arvore..." << endl;
 	
+	this->arvore.buscarIntervalo();
+	
 	//imprime resultado
 	cout << "Imprimindo lista de resultado: <?resulados?>" << endl;
 	
@@ -101,13 +105,16 @@ void Jardineiro::MostrarInserirElemento(){
 	cin >> elemento;
 	
 	cout << "Inserindo elemento na árvore... " << endl;
+	
+	this->arvore.inserir();
+	
 	cout << "Inserido com sucesso." << endl;
 }
 
 void Jardineiro::MostrarImprimirArvore(){
 	cout << "Imprimindo arvore: " << endl;
 	
-	cout << endl << "\t\tarvore" << endl;
+	this->arvore.imprimir();
 	
 	cout << endl;
 	
@@ -115,6 +122,8 @@ void Jardineiro::MostrarImprimirArvore(){
 
 void Jardineiro::MostrarEsvaziarArvore(){
 	cout << "Esvaziando arvore..." << endl;
+	
+	this->arvore.esvaziar();
 	
 	cout << "Arvore vazia." << endl;
 }
