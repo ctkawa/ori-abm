@@ -2,12 +2,14 @@
 #define JARDINEIRO_H
 
 #include <iostream>
+#include "arvore.h"
 
 using namespace std;
 
 class Jardineiro {
 	private:
 		string comando;
+		Arvore arvore;
 	
 	public:
 		Jardineiro();
