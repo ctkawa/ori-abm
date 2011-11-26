@@ -1,3 +1,4 @@
 all:
-	g++ -c *.cpp
-	g++ *.o -o jardineiro.exe
+	g++ -Wall -c *.cpp
+	g++ -Wall *.o -o jardineiro.exe
+
