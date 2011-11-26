@@ -3,7 +3,6 @@
 #include<stdio.h>
 using namespace std;
 
-
 class No {
 	private:
 		int qntOcupado, ordem;
@@ -13,6 +12,7 @@ class No {
 		
 	public:
 		No(int elementos){
+			qntOcupado = 0;
 			ordem = elementos;
 			chaves = new int[elementos - 1];
 			*pont = new void*[elementos];
@@ -22,9 +22,19 @@ class No {
 				return chaves[indice];
 		}
 		
-		void setChave(int indice, int valor){
-			if(indice >= 0 && indice <= ordem) 
-				chaves[indice] = valor;
+		int setChave(int valor){					
+			if (qntOcupado < ordem ){
+				int i;
+				for(i = qntOcupado; i > 0 && chaves[i - 1] > valor; i--)
+					chaves[i] = chaves[i - 1];
+				
+				chaves[i]  = valor;
+					
+				qntOcupado++;
+
+				return i;
+			}else
+				return -1;	
 		}
 		
 		int getQuantidade(){				// Informa a quantidade de elementos ocupados no vetor
@@ -44,7 +54,17 @@ class No {
 int main(){
 
 	No away(5);
-	away.setChave(0,34);
+	away.setChave(34);
 	cout << away.getChave(0) << endl;	
+	away.setChave(2);
+	cout << away.getChave(0) << endl;	
+	cout << away.getChave(1) << endl;	
+	away.setChave(55);
+	away.setChave(1);
+	cout << away.getQuantidade() << endl;
+	cout << away.getChave(0) << endl;
+	cout << away.getChave(1) << endl;	
+	cout << away.getChave(2) << endl;	
+	cout << away.getChave(3) << endl;	
 	return 0;
 }
