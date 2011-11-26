@@ -6,40 +6,45 @@ using namespace std;
 
 class No {
 	private:
-		int quantidade;
+		int qntOcupado, ordem;
 		int *chaves;
 		void ** pont;
-		bool tipo; // false para no interno | true para no folha
+		char tipo; // i para no interno | f para no folha
 		
 	public:
 		No(int elementos){
+			ordem = elementos;
 			chaves = new int[elementos - 1];
 			*pont = new void*[elementos];
 		}
 		int getChave(int indice){
-			if(indice >= 0 && indice <= elementos) 
+			if(indice >= 0 && indice <= ordem) 
 				return chaves[indice];
 		}
 		
 		void setChave(int indice, int valor){
-			if(indice >= 0 && indice <= elementos) 
+			if(indice >= 0 && indice <= ordem) 
 				chaves[indice] = valor;
 		}
 		
-		int getQuantidade(){
-			return quantidade;
+		int getQuantidade(){				// Informa a quantidade de elementos ocupados no vetor
+			return qntOcupado;
 		}
 		
-		int getTipo(){		// Informa o tipo do no: false para no interno | true para no folha
+		char getTipo(){					// Informa o tipo do no: i para no interno | f para no folha
 			return tipo;
 		}
+
+
 		
-
-
-
-
-
-
-
-
 };
+
+
+
+int main(){
+
+	No away(5);
+	away.setChave(0,34);
+	cout << away.getChave(0) << endl;	
+	return 0;
+}
