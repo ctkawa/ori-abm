@@ -5,15 +5,15 @@ Jardineiro::Jardineiro(){
 }
 
 void Jardineiro::executar(){
-	
+
 	// tela de inicialização
 	this->MostrarIniciar();
 	bool sair = false;
-	
+
 	while(!sair){
 		// recebe comando
 		this->MostrarComando();
-		
+
 		// interpreta comando
 		if(this->comando == "sair"){
 			sair = true;
@@ -33,7 +33,7 @@ void Jardineiro::executar(){
 			this->MostrarSobre();
 		}
 	}
-	
+
 	// tela de finalização
 	this->MostrarFinalizar();
 }
@@ -58,73 +58,73 @@ void Jardineiro::MostrarMenu(){
 
 void Jardineiro::MostrarBuscarElemento(){
 	int chave;
-	
+
 	cout << "Buscar por chave: ";
 	cin >> chave;
 	cout << endl;
-	
+
 	// busca
 	cout << "Buscando chave na arvore..." << endl;
-	
+
 	this->arvore.buscar();
-	
+
 	// imprime resultado
 	cout << "Imprimindo resultado: <?resultado?>" << endl;
-	
+
 }
 
 
 void Jardineiro::MostrarBuscarIntervalo(){
 	int min;
 	int max;
-	
+
 	cout << "Buscar por chaves entre min e max:" << endl;
-	
+
 	cout << "\tmin = ";
 	cin >> min;
 	cout << endl;
-	
+
 	cout << "\tmax = ";
 	cin >> max;
 	cout << endl;
-	
+
 	// busca
 	cout << "Buscando o Chaves na arvore..." << endl;
-	
+
 	this->arvore.buscarIntervalo();
-	
+
 	//imprime resultado
 	cout << "Imprimindo lista de resultado: <?resulados?>" << endl;
-	
+
 }
 
 void Jardineiro::MostrarInserirElemento(){
 	int elemento;
-	
+
 	cout << "Inserir elemento: ";
 	cin >> elemento;
-	
+
 	cout << "Inserindo elemento na árvore... " << endl;
-	
-	this->arvore.inserir();
-	
+
+	//this->arvore.inserir();
+
 	cout << "Inserido com sucesso." << endl;
 }
 
 void Jardineiro::MostrarImprimirArvore(){
 	cout << "Imprimindo arvore: " << endl;
-	
+
 	this->arvore.imprimir();
-	
+
 	cout << endl;
-	
+
 }
 
 void Jardineiro::MostrarEsvaziarArvore(){
 	cout << "Esvaziando arvore..." << endl;
-	
+
 	this->arvore.esvaziar();
-	
+
 	cout << "Arvore vazia." << endl;
 }
 
@@ -137,5 +137,5 @@ void Jardineiro::MostrarFinalizar(){
 }
 
 Jardineiro::~Jardineiro(){
-	
+
 }

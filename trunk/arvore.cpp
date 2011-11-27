@@ -1,10 +1,22 @@
 #include "arvore.h"
 
+
 Arvore::Arvore(){
-	
+    ordem = 5;
 }
 
-void Arvore::inserir(){
+void Arvore::inserir(int novaChave, void* novoPtr){
+    if(ptrRaiz == NULL){
+        No* novoNo = new No(ordem, false); // criar no folha
+        //novoNo <= novachave, novoPtr
+        //novoNo.ptr[0]=null // nao ha outra folha para apontar
+        ptrRaiz = novoNo;
+    } else {
+        bool dividiu = ptrRaiz->insereRec(/*raiz,*/ novaChave, novoPtr);
+        No* novaRaiz = new No(ordem, true);
+        //ajustar novaRaiz
+        ptrRaiz = novaRaiz;
+    }
 	cout << "inserido com sucesso" << endl;
 }
 
@@ -25,5 +37,5 @@ void Arvore::imprimir(){
 }
 
 Arvore::~Arvore(){
-	
+
 }
