@@ -1,0 +1,26 @@
+Construção da árvore B+
+
+Definições das características da árvore:
+
+Tamanho dos nós: 
+
+Qual o tamanho que cada nó vai ter?
+
+
+Inserção:
+
+1° Caso - árvore vazia: (IF vazia())
+
+Inicialmente o ponteiro raiz deve estar apontando para NULL.
+Instância-se um nó
+
+
+
+2° Caso - inserir elemento maior com espaço no nó:
+
+3° Caso - inserir elemento menor com espaço no nó:
+
+4° Caso - inserir elemento maior sem espaço no nó:
+
+5° Caso - inserir elemento menor sem espaço no nó:
+
