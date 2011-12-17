@@ -31,6 +31,8 @@ No::~No(){
 int No::getChave(int indice){
     if(indice >= 0 && indice <= ordem)
         return chaves[indice];
+		else
+			return -1;
 }
 
 int No::setChave(int valor){
