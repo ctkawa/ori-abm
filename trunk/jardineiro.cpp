@@ -101,14 +101,14 @@ void Jardineiro::MostrarBuscarIntervalo(){
 }
 
 void Jardineiro::MostrarInserirElemento(){
-	int elemento;
+	int *elemento = new int;
 
 	cout << "Inserir elemento: ";
-	cin >> elemento;
+	cin >> *elemento;
 
 	cout << "Inserindo elemento na árvore... " << endl;
 
-	//this->arvore.inserir();
+	this->arvore.inserir( *elemento, elemento );
 
 	cout << "Inserido com sucesso." << endl;
 }
