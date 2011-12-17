@@ -2,6 +2,7 @@
 
 
 Arvore::Arvore(){
+		ptrRaiz = NULL;
     ordem = 5;
 }
 
