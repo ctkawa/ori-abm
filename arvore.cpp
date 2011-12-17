@@ -8,10 +8,12 @@ Arvore::Arvore(){
 
 void Arvore::inserir(int novaChave, void* novoPtr){
     if(ptrRaiz == NULL){
-        No* novoNo = new No(ordem, false); // criar no folha
         //novoNo <= novachave, novoPtr
         //novoNo.ptr[0]=null // nao ha outra folha para apontar
-        ptrRaiz = novoNo;
+        ptrRaiz = new No(ordem, false); // criar no folha
+				cout << ptrRaiz->getQuantidade() << endl;
+				ptrRaiz->insereRec( novaChave, novoPtr );
+				cout << ptrRaiz->getQuantidade() << endl;
     } else {
         bool dividiu = ptrRaiz->insereRec(/*raiz,*/ novaChave, novoPtr);
         No* novaRaiz = new No(ordem, true);
@@ -20,10 +22,11 @@ void Arvore::inserir(int novaChave, void* novoPtr){
 				if( dividiu )
 					dividiu = dividiu;
 				
-				
         ptrRaiz = novaRaiz;
     }
 	cout << "inserido com sucesso" << endl;
+	
+	ptrRaiz->imprimir();
 }
 
 void Arvore::buscar(){
