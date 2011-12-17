@@ -9,7 +9,7 @@ using namespace std;
  *
 **/
 
-#include "No.h"
+#include "no.h"
 
 int No::chavePromovida;
 No* No::ptrNovoNo;
@@ -22,10 +22,12 @@ No::No(int elementos, bool isInterno){
     *pont = new void*[elementos];
     tipo = isInterno?'i':'f';
 }
+
 No::~No(){
     delete chaves;
     delete pont;
 }
+
 int No::getChave(int indice){
     if(indice >= 0 && indice <= ordem)
         return chaves[indice];

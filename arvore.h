@@ -16,9 +16,9 @@ class Arvore{
 		void esvaziar();
 		void imprimir();
 		~Arvore();
-    private:
-        No* ptrRaiz;
-        int ordem;  //Numero de ponteiros no no
+	private:
+		No* ptrRaiz;
+		int ordem;  //Numero de ponteiros no no
 };
 
 #endif
