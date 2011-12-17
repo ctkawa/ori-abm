@@ -10,11 +10,11 @@ class Jardineiro {
 	private:
 		string comando;
 		Arvore arvore;
-	
+
 	public:
 		Jardineiro();
 		void executar();
-		
+
 		// interfaces
  		void MostrarIniciar();
  		void MostrarComando();
@@ -26,7 +26,7 @@ class Jardineiro {
  		void MostrarEsvaziarArvore();
  		void MostrarSobre();
  		void MostrarFinalizar();
-		
+
 		~Jardineiro();
 };
 

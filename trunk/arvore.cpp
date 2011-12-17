@@ -18,33 +18,34 @@ void Arvore::inserir(int novaChave, void* novoPtr){
         bool dividiu = ptrRaiz->insereRec(/*raiz,*/ novaChave, novoPtr);
         No* novaRaiz = new No(ordem, true);
         //ajustar novaRaiz
-				
+
 				if( dividiu )
 					dividiu = dividiu;
-				
+
         ptrRaiz = novaRaiz;
     }
-	cout << "inserido com sucesso" << endl;
+	cout << "<stub inserir>" << endl;
 	
 	ptrRaiz->imprimir();
 }
 
 void Arvore::buscar(){
-	cout << "elemento encontrado!" << endl;
+	cout << "<stub busca>" << endl;
 }
 
 void Arvore::buscarIntervalo(){
-	cout << "intervalo encontrado" << endl;
+	cout << "<stub busca intervalo>" << endl;
 }
 
 void Arvore::esvaziar(){
-	cout << "arvore vazia" << endl;
+	cout << "<stub esvaziar>" << endl;
 }
 
 void Arvore::imprimir(){
+    cout << "<stub impressao arvore>" << endl;
 	cout << endl << "\t\t" << "A R V O R E" << endl;
 }
 
 Arvore::~Arvore(){
-
+    delete no;
 }
