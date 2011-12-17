@@ -27,6 +27,8 @@ class No {
         // insereRec retorna se dividiu ou nao
 		bool insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr);
 
+		// para fins de debug
+		void imprimir();
 
 
 };

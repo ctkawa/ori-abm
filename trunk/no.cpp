@@ -20,6 +20,11 @@ No::No(int elementos, bool isInterno){
     ordem = elementos;
     chaves = new int[elementos - 1];
     pont = new void* [elementos];
+		
+		if(!isInterno){
+			pont[0] = NULL;
+		}
+		
     tipo = isInterno? 'i' : 'f';
 }
 
@@ -115,7 +120,31 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
     return false;
 }
 
-
+void No::imprimir(){
+	cout << "No (" << qntOcupado << "):" << endl;
+	
+	cout << "chaves: [ ";
+	for(int i=0; i<ordem-1; i++){
+		if(i < qntOcupado)
+			cout << chaves[i] << ", ";
+		else
+			cout << "x ";
+	}
+	cout << "]" << endl;
+	
+	cout << "dados: [ ";
+	for(int i=0; i<ordem; i++){
+		if( i == 0){
+			cout << static_cast<No*>(pont[i]) << ", ";
+		} else if(i < qntOcupado)
+			cout << *(static_cast<int*>(pont[i])) << ", ";
+		else
+			cout << "x ";
+	}
+	cout << "]" << endl;
+	
+	
+}
 
 
 /*
