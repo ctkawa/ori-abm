@@ -31,6 +31,10 @@ void Jardineiro::executar(){
 			this->MostrarEsvaziarArvore();
 		} else if(this->comando == "sobre"){
 			this->MostrarSobre();
+		} else {
+		    cout << endl;
+		    MostrarMenu();
+		    cout << endl;
 		}
 	}
 
@@ -55,6 +59,8 @@ void Jardineiro::MostrarMenu(){
 	cout << "\tinserir" << endl;
 	cout << "\timprimir" << endl;
 	cout << "\tsair" << endl;
+	//cout << "\tmenu" << endl;
+	//cout << "\tesvaziar" << endl;
 	cout << endl;
 }
 
@@ -72,7 +78,6 @@ void Jardineiro::MostrarBuscarElemento(){
 
 	// imprime resultado
 	cout << "Imprimindo resultado: <?resultado?>" << endl;
-
 }
 
 

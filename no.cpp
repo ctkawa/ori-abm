@@ -20,11 +20,13 @@ No::No(int elementos, bool isInterno){
     ordem = elementos;
     chaves = new int[elementos - 1];
     pont = new void* [elementos];
+    for(int i=0; i<elementos; i++)
+        pont[i] = NULL;
 		
-		if(!isInterno){
-			pont[0] = NULL;
-		}
-		
+	if(!isInterno){
+		pont[0] = NULL;
+	}
+
     tipo = isInterno? 'i' : 'f';
 }
 
