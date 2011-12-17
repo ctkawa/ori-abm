@@ -52,6 +52,8 @@ void Jardineiro::MostrarMenu(){
 	cout << "\tmenu" << endl;
 	cout << "\tbuscar" << endl;
 	cout << "\tbuscarintervalo" << endl;
+	cout << "\tinserir" << endl;
+	cout << "\timprimir" << endl;
 	cout << "\tsair" << endl;
 	cout << endl;
 }

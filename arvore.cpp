@@ -15,6 +15,11 @@ void Arvore::inserir(int novaChave, void* novoPtr){
         bool dividiu = ptrRaiz->insereRec(/*raiz,*/ novaChave, novoPtr);
         No* novaRaiz = new No(ordem, true);
         //ajustar novaRaiz
+				
+				if( dividiu )
+					dividiu = dividiu;
+				
+				
         ptrRaiz = novaRaiz;
     }
 	cout << "inserido com sucesso" << endl;
