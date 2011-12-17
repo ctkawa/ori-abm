@@ -19,9 +19,7 @@ No::No(int elementos, bool isInterno){
     qntOcupado = 0;
     ordem = elementos;
     chaves = new int[elementos - 1];
-		cout << "chegou aqui" << endl;
-    *pont = new void*[elementos];
-		cout << "mas não chegou aqui" << endl;
+    pont = new void* [elementos];
     tipo = isInterno? 'i' : 'f';
 }
 
