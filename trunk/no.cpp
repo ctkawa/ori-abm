@@ -141,7 +141,7 @@ void No::imprimir(){
 	cout << "chaves: [ ";
 	for(int i=0; i<ordem-1; i++){
 		if(i < qntOcupado)
-			cout << chaves[i] << ", ";
+			cout << chaves[i] << " ";
 		else
 			cout << "x ";
 	}
@@ -150,9 +150,9 @@ void No::imprimir(){
 	cout << "dados: [ ";
 	for(int i=0; i<ordem; i++){
 		if( i == 0){
-			cout << static_cast<No*>(pont[i]) << ", ";
-		} else if(i < qntOcupado)
-			cout << *(static_cast<int*>(pont[i])) << ", ";
+			cout << static_cast<No*>(pont[i]) << " ";
+		} else if(i < qntOcupado+1)
+			cout << *(static_cast<int*>(pont[i])) << " ";
 		else
 			cout << "x ";
 	}
@@ -163,7 +163,7 @@ void No::imprimir(){
 
 int* No::busca (int busc_chave, No *raiz)
 {
-	if(raiz == NULL)//caso a árvore esteja vazia
+	if(raiz == NULL)//caso a ï¿½rvore esteja vazia
 	{
 		cout<<"arvore vazia"<<endl;
 		return NULL;
@@ -174,17 +174,17 @@ int* No::busca (int busc_chave, No *raiz)
 	aux = raiz;
 	int i;
 
-	while(aux->tipo == 'i') // while para ir até um nó folha que possivelmente
+	while(aux->tipo == 'i') // while para ir atï¿½ um nï¿½ folha que possivelmente
 	{			  //se encontra a chave procurada
-		i = 0;    //o while abaixo serve para andar nas chaves do nó interno até encontrar uma chave maior ou igual,
-		while(aux->getQuantidade() >= i+1 && aux->chaves[i] < busc_chave) //ou ver que todas as chaves desse nó são menores que a chave procurada
+		i = 0;    //o while abaixo serve para andar nas chaves do nï¿½ interno atï¿½ encontrar uma chave maior ou igual,
+		while(aux->getQuantidade() >= i+1 && aux->chaves[i] < busc_chave) //ou ver que todas as chaves desse nï¿½ sï¿½o menores que a chave procurada
 			i++;
 		if(aux->chaves[i] == busc_chave || aux->getQuantidade() < i+1)
 			aux = (static_cast<No*>(aux->pont[i+1])); // caso ache uma chave igual ou nenhuma maior *(static_cast<double*>(pont[2]))
-						  //o ponteiro aux recebe o ponteiro a direita, ou da última chave ou da chave igual
+						  //o ponteiro aux recebe o ponteiro a direita, ou da ï¿½ltima chave ou da chave igual
 
 		else if (aux->chaves[i] > busc_chave) //foi encontrada uma chave maior
-			aux = (static_cast<No*>(aux->pont[i])); // aux recebe o ponteiro para os nós com chaves menores que a maior que foi encontrada no nó que se estava pesquisando
+			aux = (static_cast<No*>(aux->pont[i])); // aux recebe o ponteiro para os nï¿½s com chaves menores que a maior que foi encontrada no nï¿½ que se estava pesquisando
 	}
 
 	// o aux sai do while acima apontando para uma folha
