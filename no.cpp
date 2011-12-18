@@ -82,8 +82,8 @@ char No::getTipo(){					// Informa o tipo do no: i para no interno | f para no f
 
 // insereRec retorna se dividiu ou nao
 bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
-		cout << endl << "== Inserindo " << novaChave << " no nó atual: =========" << endl;
-		imprimir();
+		//cout << endl << "== Inserindo " << novaChave << " no nó atual: =========" << endl;
+		//imprimir();
 		
     if(tipo == 'i'){
         No* filho = (No*) pont[qntOcupado];
@@ -109,7 +109,7 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
                 /*DIVIDIR NESTE NIVEL*/
                 // retorne parametros em "chavePromovida" e "ptrNovoNo"
 								
-								cout << endl << "dividindo nó interno por causa do " << novaChave << endl;
+								//cout << endl << "dividindo nó interno por causa do " << novaChave << endl;
 								
 								No* noesq = new No(ordem, 'i');
 								No* nodir = new No(ordem, 'i');
@@ -171,7 +171,7 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
         }else{
             /*DIVIDIR ESTA FOLHA*/
             // retorne parametros em "chavePromovida" e "ptrNovoNo"
-            cout << endl << "dividindo nó folha por causa do " << novaChave << endl;
+            //cout << endl << "dividindo nó folha por causa do " << novaChave << endl;
 						
 						No* noesq = new No(ordem, false);
 						No* nodir = new No(ordem, false);
