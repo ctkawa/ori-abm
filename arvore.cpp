@@ -16,16 +16,17 @@ void Arvore::inserir(int novaChave, void* novoPtr){
 				cout << ptrRaiz->getQuantidade() << endl;
     } else {
         bool dividiu = ptrRaiz->insereRec(/*raiz,*/ novaChave, novoPtr);
-        No* novaRaiz = new No(ordem, true);
-        //ajustar novaRaiz
 
-				if( dividiu )
-					dividiu = dividiu;
+        //Se houve divisao no raiz, criar novo raiz
+        if( dividiu ){
+            No* novaRaiz = new No(ordem, true);
+            //ajustar novaRaiz
 
-        ptrRaiz = novaRaiz;
+            ptrRaiz = novaRaiz;
+        }
     }
 	cout << "<stub inserir>" << endl;
-	
+
 	ptrRaiz->imprimir();
 }
 
@@ -47,5 +48,5 @@ void Arvore::imprimir(){
 }
 
 Arvore::~Arvore(){
-    delete no;
+    delete ptrRaiz;
 }

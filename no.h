@@ -20,6 +20,10 @@ class No {
 
 		int setChave(int valor);
 
+		void* getPont(int indice);
+
+		void setPont(int indice, void* novoPtr);
+
 		int getQuantidade();
 
 		char getTipo();
