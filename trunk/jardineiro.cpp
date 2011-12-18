@@ -2,7 +2,7 @@
 
 Jardineiro::Jardineiro(){
 	
-// 	for(int i=0; i<100; i++){
+ 	for(int i=0; i<1000; i++){
 // 		cout << "==================" << endl;
 // 		cout << "==================" << endl;
 // 		cout << "==================" << endl;
@@ -11,8 +11,8 @@ Jardineiro::Jardineiro(){
 // 		cout << "==================" << endl;
 // 		cout << "==================" << endl;
 // 		cout << "==================" << endl;
-// 		this->arvore.inserir( i, new int(i) );
-// 	}
+ 		this->arvore.inserir( i, new int(i) );
+ 	}
 // 	
 	this->executar();
 }

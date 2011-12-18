@@ -82,15 +82,17 @@ char No::getTipo(){					// Informa o tipo do no: i para no interno | f para no f
 
 // insereRec retorna se dividiu ou nao
 bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
-		//cout << endl << "== Inserindo " << novaChave << " no nó atual: =========" << endl;
-		//imprimir();
+		cout << endl << "== Inserindo " << novaChave << " no nó atual: =========" << endl;
+		imprimir();
 		
     if(tipo == 'i'){
+				cout << "------- no interno: inserindo " << novaChave << endl;
         No* filho = (No*) pont[qntOcupado];
         for(int i = qntOcupado; i>0; i--){
             if(chaves[i-1] >= novaChave)
                 filho = (No*) pont[i-1];
         }
+				cout << filho << endl;
         bool dividiu = filho->insereRec(novaChave, novoPtr);
         if(dividiu){
             if(qntOcupado < ordem-1){
@@ -109,32 +111,50 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
                 /*DIVIDIR NESTE NIVEL*/
                 // retorne parametros em "chavePromovida" e "ptrNovoNo"
 								
-								//cout << endl << "dividindo nó interno por causa do " << novaChave << endl;
+								cout << endl << "dividindo nó interno por causa do " << novaChave << endl;
 								
-								No* noesq = new No(ordem, 'i');
-								No* nodir = new No(ordem, 'i');
+								No* noesq = new No(ordem, true);
+								No* nodir = new No(ordem, true);
+								
 								
 								int posicao = 0;
 								bool novaChaveInserida = false;
-								while( posicao < ordem ){
-									
-									if( !novaChaveInserida && chaves[posicao] >= novaChave ){
-										if( noesq->getQuantidade() <= ceil(ordem/2) ){
-											noesq->insereRec( novaChave, novoPtr );
-										} else {
-											nodir->insereRec( novaChave, novoPtr );
-										}
+								bool chaveFoiPromovida = false;
+								
+								noesq->pont[0] = pont[0];
+								
+								int addchave = 0;
+								No* addpont = NULL;
+								
+								while(posicao < ordem-1){
+									if(!novaChaveInserida && chavePromovida <= chaves[posicao]){
+										addchave = filho->chavePromovida;
+										addpont = filho->ptrNovoNo;
 										novaChaveInserida = true;
-									}
-									
-									if( noesq->getQuantidade() <= ceil(ordem/2) ){
-										noesq->insereRec( chaves[posicao], pont[posicao+1] );
 									} else {
-										nodir->insereRec( chaves[posicao], pont[posicao+1] );
+										addchave = chaves[posicao];
+										addpont = static_cast<No*>(pont[posicao+1]);
+										posicao++;
 									}
 									
-									posicao++;
+									if( noesq->getQuantidade() < ceil(ordem/2) ){
+										noesq->chaves[noesq->getQuantidade()] = addchave;
+										noesq->pont[noesq->getQuantidade()+1] = addpont;
+										noesq->qntOcupado++;
+									} else {
+										if( !chaveFoiPromovida ){
+											chavePromovida = addchave;
+											nodir->pont[0] = addpont;
+											chaveFoiPromovida = true;
+										} else {
+											nodir->chaves[noesq->getQuantidade()] = addchave;
+											nodir->pont[noesq->getQuantidade()+1] = addpont;
+											nodir->qntOcupado++;
+										}
+									}
 								}
+								
+								
 								
 								// sobrescreve o no atual por noesq
 								
@@ -148,8 +168,6 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
 								
 								// retorna os dados necessários para o no pai
 								novoPtr = nodir;
-								chavePromovida = chaves[qntOcupado];
-								
 								
 								
                 return true;
@@ -171,7 +189,7 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
         }else{
             /*DIVIDIR ESTA FOLHA*/
             // retorne parametros em "chavePromovida" e "ptrNovoNo"
-            //cout << endl << "dividindo nó folha por causa do " << novaChave << endl;
+            cout << endl << "dividindo nó folha por causa do " << novaChave << endl;
 						
 						No* noesq = new No(ordem, false);
 						No* nodir = new No(ordem, false);
@@ -220,7 +238,7 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
 						
 						// retorna os dados necessários para o no pai
 						ptrNovoNo = nodir;
-						chavePromovida = chaves[qntOcupado];
+						chavePromovida = nodir->chaves[0];
 						
             return true;
         }
@@ -248,9 +266,9 @@ void No::imprimir(){
 		for(int i=0; i<ordem; i++){
 			if( i == 0){
 				cout << static_cast<No*>(pont[i]) << " ";
-			} else if(i < qntOcupado+1)
+			} else if(i < qntOcupado+1){
 				cout << *(static_cast<int*>(pont[i])) << " ";
-			else
+			} else
 				cout << "x ";
 		}
 		cout << "]" << endl;
