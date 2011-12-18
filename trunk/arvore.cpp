@@ -11,18 +11,24 @@ void Arvore::inserir(int novaChave, void* novoPtr){
         //novoNo <= novachave, novoPtr
         //novoNo.ptr[0]=null // nao ha outra folha para apontar
         ptrRaiz = new No(ordem, false); // criar no folha
-				cout << ptrRaiz->getQuantidade() << endl;
 				ptrRaiz->insereRec( novaChave, novoPtr );
-				cout << ptrRaiz->getQuantidade() << endl;
+				
     } else {
         bool dividiu = ptrRaiz->insereRec(/*raiz,*/ novaChave, novoPtr);
 
         //Se houve divisao no raiz, criar novo raiz
         if( dividiu ){
             No* novaRaiz = new No(ordem, true);
-            //ajustar novaRaiz
-
-            ptrRaiz = novaRaiz;
+						
+            ////ajustar novaRaiz
+						
+						novaRaiz->chaves[0] = ptrRaiz->chavePromovida;
+						novaRaiz->pont[0] = ptrRaiz;
+						novaRaiz->pont[1] = ptrRaiz->ptrNovoNo;
+						novaRaiz->qntOcupado = 1;
+						novaRaiz->tipo = 'i';
+						
+						ptrRaiz = novaRaiz;
         }
     }
 	cout << "<stub inserir>" << endl;

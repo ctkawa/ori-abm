@@ -2,6 +2,8 @@
 #define NO_H
 
 class No {
+	friend class Arvore;
+	
 	private:
 		int qntOcupado, ordem;
 		int *chaves;
@@ -35,7 +37,6 @@ class No {
 		void imprimir();
 
 		int* busca (int busc_chave, No *raiz);
-
 
 };
 
