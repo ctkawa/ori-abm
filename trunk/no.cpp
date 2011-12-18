@@ -161,6 +161,50 @@ void No::imprimir(){
 
 }
 
+int* No::busca (int busc_chave, No *raiz)
+{
+	if(raiz == NULL)//caso a árvore esteja vazia
+	{
+		cout<<"arvore vazia"<<endl;
+		return NULL;
+	}
+
+
+	No *aux;
+	aux = raiz;
+	int i;
+
+	while(aux->tipo == 'i') // while para ir até um nó folha que possivelmente
+	{			  //se encontra a chave procurada
+		i = 0;    //o while abaixo serve para andar nas chaves do nó interno até encontrar uma chave maior ou igual,
+		while(aux->getQuantidade() >= i+1 && aux->chaves[i] < busc_chave) //ou ver que todas as chaves desse nó são menores que a chave procurada
+			i++;
+		if(aux->chaves[i] == busc_chave || aux->getQuantidade() < i+1)
+			aux = (static_cast<No*>(aux->pont[i+1])); // caso ache uma chave igual ou nenhuma maior *(static_cast<double*>(pont[2]))
+						  //o ponteiro aux recebe o ponteiro a direita, ou da última chave ou da chave igual
+
+		else if (aux->chaves[i] > busc_chave) //foi encontrada uma chave maior
+			aux = (static_cast<No*>(aux->pont[i])); // aux recebe o ponteiro para os nós com chaves menores que a maior que foi encontrada no nó que se estava pesquisando
+	}
+
+	// o aux sai do while acima apontando para uma folha
+
+	if (aux->tipo == 'f') // estamos em uma folha
+	{
+		i=0;
+		while(aux->getQuantidade() >= i+1 && aux->chaves[i] < busc_chave)
+			i++;
+		if(aux->chaves[i] == busc_chave) //caso tenhamos na folha a chave que estavamos procurando
+			return (static_cast<int*>(aux->pont[i+1]));
+		else
+		{
+			cout<<"chave nao encontrada"<<endl;
+	 		return NULL;
+		}
+	}
+	return NULL;
+}
+
 
 /*
 int main(){

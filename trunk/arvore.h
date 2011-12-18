@@ -11,7 +11,7 @@ class Arvore{
 	public:
 		Arvore();
 		void inserir(int, void*);
-		void buscar();
+		int* buscar (int busc_chave);
 		void buscarIntervalo();
 		void esvaziar();
 		void imprimir();
