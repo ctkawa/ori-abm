@@ -1,8 +1,8 @@
 #include "jardineiro.h"
 
 Jardineiro::Jardineiro(){
-	
- 	for(int i=0; i<1000; i++){
+
+ 	for(int i=0; i<5; i++){
 // 		cout << "==================" << endl;
 // 		cout << "==================" << endl;
 // 		cout << "==================" << endl;
@@ -13,7 +13,7 @@ Jardineiro::Jardineiro(){
 // 		cout << "==================" << endl;
  		this->arvore.inserir( i, new int(i) );
  	}
-// 	
+
 	this->executar();
 }
 
@@ -40,6 +40,8 @@ void Jardineiro::executar(){
 			this->MostrarInserirElemento();
 		} else if(this->comando == "imprimir"){
 			this->MostrarImprimirArvore();
+        } else if(this->comando == "abrir"){
+			this->MostrarAbrirArvore();
 		} else if(this->comando == "esvaziar"){
 			this->MostrarEsvaziarArvore();
 		} else if(this->comando == "sobre"){
@@ -56,7 +58,7 @@ void Jardineiro::executar(){
 }
 
 void Jardineiro::MostrarIniciar(){
-	
+
 	cout << endl;
 	cout << "   _.%.$$&$%$$8o_	" << endl;
 	cout << " _$$$$%$&&&%$&&$$$.	" << endl;
@@ -79,7 +81,7 @@ void Jardineiro::MostrarIniciar(){
 	cout << "     _.986,_ 	" << endl;
 	cout << "        ' `' mh	" << endl;
 	cout << endl;
-	
+
 	cout << "Bem vindo a Arvore!" << endl;
 }
 
@@ -95,6 +97,7 @@ void Jardineiro::MostrarMenu(){
 	cout << "\tbuscarintervalo" << endl;
 	cout << "\tinserir" << endl;
 	cout << "\timprimir" << endl;
+	cout << "\tabrir" << endl;
 	cout << "\tsair" << endl;
 	//cout << "\tmenu" << endl;
 	//cout << "\tesvaziar" << endl;
@@ -116,7 +119,6 @@ void Jardineiro::MostrarBuscarElemento(){
 	// imprime resultado
 	cout << "Imprimindo resultado: " <<*resultado<< endl;
 }
-
 
 void Jardineiro::MostrarBuscarIntervalo(){
 	int min;
@@ -159,6 +161,15 @@ void Jardineiro::MostrarImprimirArvore(){
 	cout << "Imprimindo arvore: " << endl;
 
 	this->arvore.imprimir();
+
+	cout << endl;
+
+}
+
+void Jardineiro::MostrarAbrirArvore(){
+	cout << "Abrindo a arvore impressa em seu navegador padrao: " << endl;
+
+	this->arvore.abrir();
 
 	cout << endl;
 
