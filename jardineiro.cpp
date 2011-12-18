@@ -1,6 +1,10 @@
 #include "jardineiro.h"
 
 Jardineiro::Jardineiro(){
+	
+	for(int i=0; i<5; i++)
+		this->arvore.inserir( i, new int(i) );
+	
 	this->executar();
 }
 
@@ -43,6 +47,30 @@ void Jardineiro::executar(){
 }
 
 void Jardineiro::MostrarIniciar(){
+	
+	cout << endl;
+	cout << "   _.%.$$&$%$$8o_	" << endl;
+	cout << " _$$$$%$&&&%$&&$$$.	" << endl;
+	cout << ".$&%$$$$&$%$/$&&$%$	" << endl;
+	cout << "$$$%$$%&$&%/$&%$$&$$	" << endl;
+	cout << "_%$$$&$%$$%$%$$$%&$&	" << endl;
+	cout << "$$&$$|$$$\\%$%$$%$$$'	" << endl;
+	cout << "%&$%|&$$$$V$&/$$&$&$	" << endl;
+	cout << "`$$%&|$%$%|$&$&%%%$$	" << endl;
+	cout << " '%$$$%$$&$%$$/$$`	" << endl;
+	cout << "  $$&$&|&$%%/$$%$$,	" << endl;
+	cout << "   ` $$|||//$%	" << endl;
+	cout << "       #89 " << endl;
+	cout << "       8#R	" << endl;
+	cout << "       6FN	" << endl;
+	cout << "       XB#" << endl;
+	cout << "       S8P	" << endl;
+	cout << "       #8H	" << endl;
+	cout << "       9##	" << endl;
+	cout << "     _.986,_ 	" << endl;
+	cout << "        ' `' mh	" << endl;
+	cout << endl;
+	
 	cout << "Bem vindo a Arvore!" << endl;
 }
 
