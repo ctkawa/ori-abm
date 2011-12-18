@@ -34,6 +34,8 @@ class No {
 		// para fins de debug
 		void imprimir();
 
+		int* busca (int busc_chave, No *raiz);
+
 
 };
 

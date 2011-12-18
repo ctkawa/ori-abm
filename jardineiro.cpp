@@ -74,10 +74,10 @@ void Jardineiro::MostrarBuscarElemento(){
 	// busca
 	cout << "Buscando chave na arvore..." << endl;
 
-	this->arvore.buscar();
+	int* resultado = this->arvore.buscar(chave);
 
 	// imprime resultado
-	cout << "Imprimindo resultado: <?resultado?>" << endl;
+	cout << "Imprimindo resultado: " <<*resultado<< endl;
 }
 
 

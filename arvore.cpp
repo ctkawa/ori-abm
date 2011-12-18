@@ -30,7 +30,8 @@ void Arvore::inserir(int novaChave, void* novoPtr){
 	ptrRaiz->imprimir();
 }
 
-void Arvore::buscar(){
+int* Arvore::buscar (int busc_chave){
+    return ptrRaiz->busca (busc_chave , ptrRaiz);
 	cout << "<stub busca>" << endl;
 }
 
