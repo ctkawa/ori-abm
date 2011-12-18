@@ -22,7 +22,7 @@ No::No(int elementos, bool isInterno){
     pont = new void* [elementos];
     for(int i=0; i<elementos; i++)
         pont[i] = NULL;
-		
+
 	if(!isInterno){
 		pont[0] = NULL;
 	}
@@ -38,8 +38,8 @@ No::~No(){
 int No::getChave(int indice){
     if(indice >= 0 && indice <= ordem)
         return chaves[indice];
-		else
-			return -1;
+    else
+        return -1;
 }
 
 int No::setChave(int valor){
@@ -55,6 +55,19 @@ int No::setChave(int valor){
         return i;
     }else
         return -1;
+}
+
+void* No::getPont(int indice){
+    if(indice >= 0 && indice < ordem)
+        return pont[indice];
+    else
+        return NULL;
+}
+
+void No::setPont(int indice, void* novoPtr){
+    if(indice >= 0 && indice < ordem){
+        pont[indice] = novoPtr;
+    }
 }
 
 int No::getQuantidade(){				// Informa a quantidade de elementos ocupados no vetor
@@ -124,7 +137,7 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
 
 void No::imprimir(){
 	cout << "No (" << qntOcupado << "):" << endl;
-	
+
 	cout << "chaves: [ ";
 	for(int i=0; i<ordem-1; i++){
 		if(i < qntOcupado)
@@ -133,7 +146,7 @@ void No::imprimir(){
 			cout << "x ";
 	}
 	cout << "]" << endl;
-	
+
 	cout << "dados: [ ";
 	for(int i=0; i<ordem; i++){
 		if( i == 0){
@@ -144,8 +157,8 @@ void No::imprimir(){
 			cout << "x ";
 	}
 	cout << "]" << endl;
-	
-	
+
+
 }
 
 
