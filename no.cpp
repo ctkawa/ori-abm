@@ -82,6 +82,9 @@ char No::getTipo(){					// Informa o tipo do no: i para no interno | f para no f
 
 // insereRec retorna se dividiu ou nao
 bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
+		cout << endl << "== Inserindo " << novaChave << " no nó atual: =========" << endl;
+		imprimir();
+		
     if(tipo == 'i'){
         No* filho = (No*) pont[qntOcupado];
         for(int i = qntOcupado; i>0; i--){
@@ -106,6 +109,7 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
                 /*DIVIDIR NESTE NIVEL*/
                 // retorne parametros em "chavePromovida" e "ptrNovoNo"
 								
+								cout << endl << "dividindo nó interno por causa do " << novaChave << endl;
 								
 								No* noesq = new No(ordem, 'i');
 								No* nodir = new No(ordem, 'i');
@@ -120,6 +124,7 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
 										} else {
 											nodir->insereRec( novaChave, novoPtr );
 										}
+										novaChaveInserida = true;
 									}
 									
 									if( noesq->getQuantidade() <= ceil(ordem/2) ){
@@ -151,9 +156,7 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
             }
         }
     }else if(tipo == 'f'){
-			cout << "tipo = f, qtdOcupado =" << qntOcupado << endl;
         if(qntOcupado < ordem-1){
-						cout << "\t\t inserindo " << novaChave << " aqui" << endl;
             /*INSERIR NESTA FOLHA*/
             int contador = qntOcupado;  //contador = primeira posicao vazia
             while(contador>0 && (chaves[contador-1] >= novaChave)){
@@ -168,33 +171,23 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
         }else{
             /*DIVIDIR ESTA FOLHA*/
             // retorne parametros em "chavePromovida" e "ptrNovoNo"
-						
+            cout << endl << "dividindo nó folha por causa do " << novaChave << endl;
 						
 						No* noesq = new No(ordem, false);
 						No* nodir = new No(ordem, false);
 						
-						cout << "criou noesq e nodir" << endl;
-						
 						int posicao = 0;
 						bool novaChaveInserida = false;
-						cout << "vai entrar no while" << endl;
 						
 						while( posicao < ordem-1 ){
-							cout << "entrou no while:" << posicao << endl;
-							cout << "nova chave inserida = " << novaChaveInserida << endl;
-							cout << "chaves[posicao] = " << chaves[posicao] << endl;
 							
 							if( !novaChaveInserida && chaves[posicao] >= novaChave ){
-								cout << "vai inserir a nova chave" << endl;
 								if( noesq->getQuantidade() <= ceil(ordem/2) ){
-									cout << "vai inserir a nova chave em noesq" << endl;
 									noesq->insereRec( novaChave, novoPtr );
-									cout << "inseriu a nova chave em noesq" << endl;
 								} else {
-									cout << "vair inserir a nova chave em noesq" << endl;
 									nodir->insereRec( novaChave, novoPtr );
-									cout << "inseriu a nova chave em nodir" << endl;
 								}
+								novaChaveInserida = true;
 							}
 							
 							if( noesq->getQuantidade() <= ceil(ordem/2) ){
@@ -207,17 +200,8 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
 						}
 						
 						if(!novaChaveInserida){
-							cout << "vai inserir a nova chave em nodir" << endl;
 							nodir->insereRec( novaChave, novoPtr );
-							cout << "inseriu a nova chave em nodir" << endl;
 						}
-						
-						cout << "saiu do while" << endl;
-						
-						cout << "noesq: " << endl;
-						noesq->imprimir();
-						cout << "nodir: " << endl;
-						nodir->imprimir();
 						
 						// resolve ponteiros da lista
 						noesq->pont[0] = nodir;
@@ -235,7 +219,7 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
 							pont[i] = noesq->pont[i];
 						
 						// retorna os dados necessários para o no pai
-						novoPtr = nodir;
+						ptrNovoNo = nodir;
 						chavePromovida = chaves[qntOcupado];
 						
             return true;
@@ -259,17 +243,27 @@ void No::imprimir(){
 	}
 	cout << "]" << endl;
 
-	cout << "dados: [ ";
-	for(int i=0; i<ordem; i++){
-		if( i == 0){
-			cout << static_cast<No*>(pont[i]) << " ";
-		} else if(i < qntOcupado+1)
-			cout << *(static_cast<int*>(pont[i])) << " ";
-		else
-			cout << "x ";
+	if( tipo == 'f' ){
+		cout << "dados: [ ";
+		for(int i=0; i<ordem; i++){
+			if( i == 0){
+				cout << static_cast<No*>(pont[i]) << " ";
+			} else if(i < qntOcupado+1)
+				cout << *(static_cast<int*>(pont[i])) << " ";
+			else
+				cout << "x ";
+		}
+		cout << "]" << endl;
+	} else {
+		cout << "pont: [ ";
+		for(int i=0; i<ordem; i++){
+			if(i < qntOcupado+1)
+				cout << static_cast<No*>(pont[i]) << " ";
+			else
+				cout << "x ";
+		}
+		cout << "]" << endl;
 	}
-	cout << "]" << endl;
-
 
 }
 

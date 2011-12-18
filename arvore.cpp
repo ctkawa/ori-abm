@@ -26,14 +26,12 @@ void Arvore::inserir(int novaChave, void* novoPtr){
 						novaRaiz->pont[0] = ptrRaiz;
 						novaRaiz->pont[1] = ptrRaiz->ptrNovoNo;
 						novaRaiz->qntOcupado = 1;
-						novaRaiz->tipo = 'i';
 						
 						ptrRaiz = novaRaiz;
+						novaRaiz->imprimir();
         }
     }
 	cout << "<stub inserir>" << endl;
-
-	ptrRaiz->imprimir();
 }
 
 int* Arvore::buscar (int busc_chave){
