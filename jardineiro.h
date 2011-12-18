@@ -23,6 +23,7 @@ class Jardineiro {
  		void MostrarBuscarIntervalo();
  		void MostrarInserirElemento();
  		void MostrarImprimirArvore();
+ 		void MostrarAbrirArvore();
  		void MostrarEsvaziarArvore();
  		void MostrarSobre();
  		void MostrarFinalizar();

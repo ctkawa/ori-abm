@@ -84,7 +84,7 @@ char No::getTipo(){					// Informa o tipo do no: i para no interno | f para no f
 bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
 		cout << endl << "== Inserindo " << novaChave << " no nó atual: =========" << endl;
 		imprimir();
-		
+
     if(tipo == 'i'){
 				cout << "------- no interno: inserindo " << novaChave << endl;
         No* filho = (No*) pont[qntOcupado];
@@ -110,22 +110,22 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
             } else {
                 /*DIVIDIR NESTE NIVEL*/
                 // retorne parametros em "chavePromovida" e "ptrNovoNo"
-								
+
 								cout << endl << "dividindo nó interno por causa do " << novaChave << endl;
-								
+
 								No* noesq = new No(ordem, true);
 								No* nodir = new No(ordem, true);
-								
-								
+
+
 								int posicao = 0;
 								bool novaChaveInserida = false;
 								bool chaveFoiPromovida = false;
-								
+
 								noesq->pont[0] = pont[0];
-								
+
 								int addchave = 0;
 								No* addpont = NULL;
-								
+
 								while(posicao < ordem-1){
 									if(!novaChaveInserida && chavePromovida <= chaves[posicao]){
 										addchave = filho->chavePromovida;
@@ -136,7 +136,7 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
 										addpont = static_cast<No*>(pont[posicao+1]);
 										posicao++;
 									}
-									
+
 									if( noesq->getQuantidade() < ceil(ordem/2) ){
 										noesq->chaves[noesq->getQuantidade()] = addchave;
 										noesq->pont[noesq->getQuantidade()+1] = addpont;
@@ -153,23 +153,21 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
 										}
 									}
 								}
-								
-								
-								
+
+
+
 								// sobrescreve o no atual por noesq
-								
+
 								qntOcupado = noesq->qntOcupado;
-								
+
 								for(int i=0; i<qntOcupado; i++)
 									chaves[i] = noesq->chaves[i];
-								
+
 								for(int i=0; i<=qntOcupado; i++)
 									pont[i] = noesq->pont[i];
-								
+
 								// retorna os dados necessários para o no pai
 								novoPtr = nodir;
-								
-								
                 return true;
             }
         }
@@ -190,15 +188,15 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
             /*DIVIDIR ESTA FOLHA*/
             // retorne parametros em "chavePromovida" e "ptrNovoNo"
             cout << endl << "dividindo nó folha por causa do " << novaChave << endl;
-						
+
 						No* noesq = new No(ordem, false);
 						No* nodir = new No(ordem, false);
-						
+
 						int posicao = 0;
 						bool novaChaveInserida = false;
-						
+
 						while( posicao < ordem-1 ){
-							
+
 							if( !novaChaveInserida && chaves[posicao] >= novaChave ){
 								if( noesq->getQuantidade() <= ceil(ordem/2) ){
 									noesq->insereRec( novaChave, novoPtr );
@@ -207,39 +205,39 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
 								}
 								novaChaveInserida = true;
 							}
-							
+
 							if( noesq->getQuantidade() <= ceil(ordem/2) ){
 								noesq->insereRec( chaves[posicao], pont[posicao+1] );
 							} else {
 								nodir->insereRec( chaves[posicao], pont[posicao+1] );
 							}
-							
+
 							posicao++;
 						}
-						
+
 						if(!novaChaveInserida){
 							nodir->insereRec( novaChave, novoPtr );
 						}
-						
+
 						// resolve ponteiros da lista
 						noesq->pont[0] = nodir;
 						nodir->pont[0] = pont[0];
-						
-						
+
+
 						// sobrescreve o no atual por noesq
-						
+
 						qntOcupado = noesq->qntOcupado;
-						
+
 						for(int i=0; i<qntOcupado; i++)
 							chaves[i] = noesq->chaves[i];
-						
+
 						for(int i=0; i<=qntOcupado; i++)
 							pont[i] = noesq->pont[i];
-						
+
 						// retorna os dados necessários para o no pai
 						ptrNovoNo = nodir;
 						chavePromovida = nodir->chaves[0];
-						
+
             return true;
         }
     }else{
