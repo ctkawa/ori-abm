@@ -51,8 +51,8 @@ void Arvore::esvaziar(){
 
 void Arvore::imprimir(){
     ofstream html("Arvore.html");
-    qtdNo = 0;
     ptrRaiz->contarNo(qtdNo);
+    //qtdNo = ;
     cout << qtdNo;
     nivelNo *vetorNo = new nivelNo [qtdNo];
     int k=0, i, j, nivelTemp = 0;
@@ -82,6 +82,8 @@ void Arvore::imprimir(){
         html << "<tr><th colspan=4 style=\"border: 1px #8f8 solid\">N&iacute;vel " << vetorNo[i].nivel << " - ";
         if(vetorNo[i].nivel == 1)
             html << " Raiz";
+        else if (vetorNo[i].folha)
+            html << " Folha";
         else
             html << " N&oacute;";
         html << "</th></tr>" << endl;
@@ -118,6 +120,7 @@ void Arvore::montaVetorImpressao(nivelNo vetorNo[], No *esse, int &k, int level)
     if(esse->getTipo() == 'f') {
         noAtual.esseNo = esse;
         noAtual.nivel = level;
+        noAtual.folha = true;
         vetorNo[k++] = noAtual;
         return;
     }
@@ -131,6 +134,7 @@ void Arvore::montaVetorImpressao(nivelNo vetorNo[], No *esse, int &k, int level)
     }
     noAtual.esseNo = esse;
     noAtual.nivel = level;
+    noAtual.folha = false;
     vetorNo[k++] = noAtual;
 }
 
