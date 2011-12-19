@@ -25,6 +25,7 @@ class Jardineiro {
  		void MostrarInserirElemento();
  		void MostrarImprimirArvore();
  		void MostrarAbrirArvore();
+ 		void MostrarListarArvore();
  		void MostrarEsvaziarArvore();
  		void MostrarSobre();
  		void MostrarFinalizar();
