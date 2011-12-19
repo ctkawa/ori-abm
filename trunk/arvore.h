@@ -10,6 +10,7 @@ using namespace std;
 struct nivelNo {
     No *esseNo;
     short int nivel;
+    bool folha;
 };
 
 class Arvore{
