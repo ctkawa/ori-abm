@@ -12,7 +12,7 @@ int main (){
      2   4
     1 5 6 7
 */
-
+/*
 	No* no1 = new No(5,false);//folha
 	cout << "sizeof folha: " << sizeof(*no1) << " bytes" << endl;
 	No* no2 = new No(5,true);//interno
@@ -42,7 +42,7 @@ int main (){
     delete no5;
     delete no6;
     delete no7;
-
+*/
 	Jardineiro j;
 
 	return 0;
