@@ -2,7 +2,7 @@
 
 Jardineiro::Jardineiro(){
 
- 	for(int i=0; i<20; i++){
+ 	for(int i=0; i<100; i++){
 // 		cout << "==================" << endl;
 // 		cout << "==================" << endl;
 // 		cout << "==================" << endl;
@@ -45,6 +45,8 @@ void Jardineiro::executar(){
 			this->MostrarImprimirArvore();
         } else if(this->comando == "abrir"){
 			this->MostrarAbrirArvore();
+        } else if(this->comando == "listar"){
+			this->MostrarListarArvore();
 		} else if(this->comando == "esvaziar"){
 			this->MostrarEsvaziarArvore();
 		} else if(this->comando == "sobre"){
@@ -101,6 +103,7 @@ void Jardineiro::MostrarMenu(){
 	cout << "\tinserir" << endl;
 	cout << "\timprimir" << endl;
 	cout << "\tabrir" << endl;
+	cout << "\tlistar" << endl;
 	cout << "\tsair" << endl;
 	//cout << "\tmenu" << endl;
 	//cout << "\tesvaziar" << endl;
@@ -174,6 +177,15 @@ void Jardineiro::MostrarAbrirArvore(){
 	cout << "Abrindo a arvore impressa em seu navegador padrao: " << endl;
 
 	this->arvore.abrir();
+
+	cout << endl;
+
+}
+
+void Jardineiro::MostrarListarArvore(){
+	cout << "Listando todos os numeros da arvore: " << endl;
+
+	this->arvore.listar();
 
 	cout << endl;
 

@@ -168,8 +168,39 @@ void Arvore::abrir() {
     }
 }
 
-void Arvore::incQtdNo() {
-    qtdNo++;
+void Arvore::listar(){
+    ofstream html("Arvore_-_Listagem.html");
+    ptrRaiz->contarNo(qtdNo);
+    nivelNo *vetorNo = new nivelNo [qtdNo];
+    int k=0, i, j, nivelTemp = 0;
+
+    // Construindo cabeçalho do arquivo html
+    html << "<html>\n<head>\n<title>Visualiza&ccedil;&atilde;o da &Aacute;rvore B+</title>\n</head>\n<body>\n\n" << endl;
+
+    // Monta o vetor de structs com ponteiros para todos os nós e seus respectiveis níveis
+    montaVetorImpressao(vetorNo, ptrRaiz, k, 1);
+
+    // O InsertionSort serve para organizar o vetor começando pelos níveis menores (próximos à raiz)
+    insertionsort(vetorNo, qtdNo);
+
+    html << "<h1 align=\"center\">A &aacute;rvore possui as seguintes chaves:</h1>\n<div align=\"center\"><center>\n";
+    if(qtdNo == 0)
+        html << "Vazia\n<br /><br />";
+    for(i=0;i<qtdNo;i++) {
+        if(vetorNo[i].folha) {
+            for(j=0;j<vetorNo[i].esseNo->getQuantidade();j++)
+                html << vetorNo[i].esseNo->getChave(j) << "<br />" << endl;
+        }
+    }
+    html << "</center></div>";
+
+    // Construindo o rodapé da página
+    html << "\n\n</body>\n</html>";
+    html.close();
+    if(qtdNo == 0)
+        cout << "A arvore esta vazia atualmente.\nInsira alguns valores..." << endl;
+    else
+        cout << endl << "Arvore construida com sucesso!\nDigite 'Abrir' para ela aparecer em seu navegador!" << endl;
 }
 
 int Arvore::getNumeroNo(){
