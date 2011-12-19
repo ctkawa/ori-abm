@@ -82,7 +82,7 @@ char No::getTipo(){					// Informa o tipo do no: i para no interno | f para no f
 
 // insereRec retorna se dividiu ou nao
 bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
-		cout << endl << "== Inserindo " << novaChave << " no nó atual: =========" << endl;
+		cout << endl << "== Inserindo " << novaChave << " no no atual: =========" << endl;
 		imprimir();
 
     if(tipo == 'i'){
@@ -111,7 +111,7 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
                 /*DIVIDIR NESTE NIVEL*/
                 // retorne parametros em "chavePromovida" e "ptrNovoNo"
 
-								cout << endl << "dividindo nó interno por causa do " << novaChave << endl;
+								cout << endl << "dividindo no interno por causa do " << novaChave << endl;
 
 								No* noesq = new No(ordem, true);
 								No* nodir = new No(ordem, true);
@@ -187,7 +187,7 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
         }else{
             /*DIVIDIR ESTA FOLHA*/
             // retorne parametros em "chavePromovida" e "ptrNovoNo"
-            cout << endl << "dividindo nó folha por causa do " << novaChave << endl;
+            cout << endl << "dividindo no folha por causa do " << novaChave << endl;
 
 						No* noesq = new No(ordem, false);
 						No* nodir = new No(ordem, false);
@@ -199,24 +199,24 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
 
 							if( !novaChaveInserida && chaves[posicao] >= novaChave ){
 								if( noesq->getQuantidade() <= ceil(ordem/2) ){
-									noesq->insereRec( novaChave, novoPtr );
+									noesq->insereRec( novaChave, novoPtr);
 								} else {
-									nodir->insereRec( novaChave, novoPtr );
+									nodir->insereRec( novaChave, novoPtr);
 								}
 								novaChaveInserida = true;
 							}
 
 							if( noesq->getQuantidade() <= ceil(ordem/2) ){
-								noesq->insereRec( chaves[posicao], pont[posicao+1] );
+								noesq->insereRec( chaves[posicao], pont[posicao+1]);
 							} else {
-								nodir->insereRec( chaves[posicao], pont[posicao+1] );
+								nodir->insereRec( chaves[posicao], pont[posicao+1]);
 							}
 
 							posicao++;
 						}
 
 						if(!novaChaveInserida){
-							nodir->insereRec( novaChave, novoPtr );
+							nodir->insereRec( novaChave, novoPtr);
 						}
 
 						// resolve ponteiros da lista

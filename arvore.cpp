@@ -2,7 +2,7 @@
 //#include <iostream>
 #include <fstream>
 #include <cstdlib>
-#include "selectionsort.h"
+#include "insertionsort.h"
 
 Arvore::Arvore(){
     ptrRaiz = NULL;
@@ -15,8 +15,7 @@ void Arvore::inserir(int novaChave, void* novoPtr){
         //novoNo <= novachave, novoPtr
         //novoNo.ptr[0]=null // nao ha outra folha para apontar
         ptrRaiz = new No(ordem, false); // criar no folha
-        ptrRaiz->insereRec( novaChave, novoPtr );
-        qtdNo++;
+        ptrRaiz->insereRec( novaChave, novoPtr);
     } else {
         bool dividiu = ptrRaiz->insereRec(/*raiz,*/ novaChave, novoPtr);
         //Se houve divisao no raiz, criar novo raiz
@@ -32,7 +31,6 @@ void Arvore::inserir(int novaChave, void* novoPtr){
 
 						ptrRaiz = novaRaiz;
 						novaRaiz->imprimir();
-						qtdNo++;
         }
     }
 }
@@ -53,6 +51,8 @@ void Arvore::esvaziar(){
 
 void Arvore::imprimir(){
     ofstream html("Arvore.html");
+    qtdNo = 4;
+    //ptrRaiz->contarNo(qtdNo);
     nivelNo *vetorNo = new nivelNo [qtdNo];
     int k=0, i, j, nivelTemp = 0;
 
@@ -62,11 +62,8 @@ void Arvore::imprimir(){
     // Monta o vetor de structs com ponteiros para todos os nós e seus respectiveis níveis
     montaVetorImpressao(vetorNo, ptrRaiz, k, 1);
 
-    /// Ainda não foi feito!!!
-    // Usar selection no vetorNo
-    // Isso fará com que os níveis próximos às folhas fiquem no final e os níveis próximo à raiz fiquem no começo
-    // Com isso posso mostrar a árvore na sequência
-    selectionsort(vetorNo, qtdNo);
+    // O InsertionSort serve para organizar o vetor começando pelos níveis menores (próximos à raiz)
+    insertionsort(vetorNo, qtdNo);
 
     html << "<h1 align=\"center\">A &aacute;rvore est&aacute; assim:</h1>\n<div align=\"center\"><center>\n";
     if(qtdNo == 0)
@@ -113,6 +110,7 @@ void Arvore::imprimir(){
 void Arvore::montaVetorImpressao(nivelNo vetorNo[], No *esse, int &k, int level) {
     nivelNo noAtual;
 
+    // Caso a árvore não tenha nada
     if(!esse)
         return;
 
@@ -128,12 +126,11 @@ void Arvore::montaVetorImpressao(nivelNo vetorNo[], No *esse, int &k, int level)
 
     while(n) {
         montaVetorImpressao(vetorNo, (No*)esse->getPont(i++), k, level+1);
-        noAtual.esseNo = esse;
-        noAtual.nivel = level;
-        vetorNo[k] = noAtual;
         n--;
     }
-    return;
+    noAtual.esseNo = esse;
+    noAtual.nivel = level;
+    vetorNo[k++] = noAtual;
 }
 
 void Arvore::abrir() {
@@ -144,6 +141,10 @@ void Arvore::abrir() {
         tem.close();
         system("Arvore.html");
     }
+}
+
+void Arvore::incQtdNo() {
+    qtdNo++;
 }
 
 Arvore::~Arvore(){

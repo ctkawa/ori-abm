@@ -150,7 +150,7 @@ void Jardineiro::MostrarInserirElemento(){
 	cout << "Inserir elemento: ";
 	cin >> *elemento;
 
-	cout << "Inserindo elemento na árvore... " << endl;
+	cout << "Inserindo elemento na arvore... " << endl;
 
 	this->arvore.inserir( *elemento, elemento );
 
