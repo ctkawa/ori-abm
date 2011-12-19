@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include "insertionsort.h"
 
+#define DEBUG
+
 Arvore::Arvore(){
     ptrRaiz = NULL;
     ordem = 5;
@@ -80,20 +82,38 @@ void Arvore::imprimir(){
         html << "<td><table border=1 style=\"background-color: #00ca00;border: 1px #0f0 solid;\">" << endl;
         // Número do nível (1 = raiz)
         html << "<tr><th colspan=4 style=\"border: 1px #8f8 solid\">N&iacute;vel " << vetorNo[i].nivel << " - ";
-        if(vetorNo[i].nivel == 1)
+        if(vetorNo[i].nivel == 1){
             html << " Raiz";
-        else if (vetorNo[i].folha)
+#ifdef DEBUG
+html << " " << vetorNo[i].esseNo;
+#endif
+        }else if (vetorNo[i].folha){
             html << " Folha";
-        else
+#ifdef DEBUG
+html << " " << vetorNo[i].esseNo;
+#endif
+        }else{
             html << " N&oacute;";
+#ifdef DEBUG
+html << " " << vetorNo[i].esseNo;
+#endif
+        }
         html << "</th></tr>" << endl;
         // Ordem da árvore
         html << "<tr><th style=\"border: 1px #8f8 solid\">N&deg; chaves" << "</th><td style=\"border: 1px #8f8 solid\">" << vetorNo[i].esseNo->getQuantidade() << "</td>" << endl;  // Quantidade de arquivos
         html << "<th style=\"border: 1px #8f8 solid\">Ordem" << "</th><td style=\"border: 1px #8f8 solid\">" << ordem << "</td></tr>" << endl;
         // Elementos da chave
         html << "<tr><th style=\"border: 1px #8f8 solid\">Chaves" << "</th><td colspan=3 style=\"border: 1px #8f8 solid\">\n<table border=1 style=\"border: 1px #00f solid;\" align=\"center\"><tr>";
-        for(j=0;j<vetorNo[i].esseNo->getQuantidade();j++)
-            html << "<td style=\"border: 1px #00f solid\">" << vetorNo[i].esseNo->getChave(j) << "</td>";
+        for(j=0;j<vetorNo[i].esseNo->getQuantidade();j++){
+            html << "<td style=\"border: 1px #00f solid\">" << vetorNo[i].esseNo->getChave(j);
+#ifdef DEBUG
+html << "/" << vetorNo[i].esseNo->getPont(j);
+if (!vetorNo[i].folha){
+html << "/" << vetorNo[i].esseNo->getPont(j+1);
+}
+#endif
+            html << "</td>";
+        }
         html << "</tr>\n</table></td>" << endl;
 
         html << "</table></td>" << endl;
