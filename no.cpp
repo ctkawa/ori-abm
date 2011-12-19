@@ -327,6 +327,15 @@ int* No::busca (int busc_chave, No *raiz)
 	return NULL;
 }
 
+// contar nos descendentes, inclusive este
+void No::contarNo(int &contagem){
+    if(tipo=='i'){
+        for(int i = 0; i<qntOcupado; i++){
+            ((No*)pont[i])->contarNo(contagem);
+        }
+    }
+    contagem += 1;  //desse no
+}
 
 /*
 int main(){

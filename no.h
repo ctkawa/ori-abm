@@ -3,7 +3,7 @@
 
 class No {
 	friend class Arvore;
-	
+
 	private:
 		int qntOcupado, ordem;
 		int *chaves;
@@ -38,6 +38,7 @@ class No {
 
 		int* busca (int busc_chave, No *raiz);
 
+		void contarNo(int &contagem);
 };
 
 #endif

@@ -35,7 +35,6 @@ void Arvore::inserir(int novaChave, void* novoPtr){
 						qtdNo++;
         }
     }
-	cout << "<stub inserir>" << endl;
 }
 
 int* Arvore::buscar (int busc_chave){
