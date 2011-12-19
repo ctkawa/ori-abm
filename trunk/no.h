@@ -9,6 +9,7 @@ class No {
 		int *chaves;
 		void ** pont;
 		char tipo; // i para no interno | f para no folha
+		int *pQtdNo;
 
 // Para uso interno
 		static int chavePromovida;
@@ -37,7 +38,6 @@ class No {
 		void imprimir();
 
 		int* busca (int busc_chave, No *raiz);
-
 		void contarNo(int &contagem);
 };
 

@@ -26,6 +26,7 @@ class Arvore{
 		void imprimir();
 		void abrir();
 		void montaVetorImpressao(nivelNo[], No *esse, int &k, int level);
+		void incQtdNo();
 		~Arvore();
 };
 
