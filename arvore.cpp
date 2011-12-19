@@ -51,7 +51,7 @@ void Arvore::esvaziar(){
 
 void Arvore::imprimir(){
     ofstream html("Arvore.html");
-    //qtdNo = 4;
+    qtdNo = 0;
     ptrRaiz->contarNo(qtdNo);
     cout << qtdNo;
     nivelNo *vetorNo = new nivelNo [qtdNo];
@@ -146,6 +146,12 @@ void Arvore::abrir() {
 
 void Arvore::incQtdNo() {
     qtdNo++;
+}
+
+int Arvore::getNumeroNo(){
+    int contagem = 0;
+    ptrRaiz->contarNo(contagem);
+    return contagem;
 }
 
 Arvore::~Arvore(){

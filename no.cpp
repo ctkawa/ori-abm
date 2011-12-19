@@ -172,7 +172,7 @@ bool No::insereRec(/*No* noAtual,*/ int novaChave, void* novoPtr){
             }
         }
     }else if(tipo == 'f'){
-        if(qntOcupado < ordem-1){
+        if(qntOcupado < ordem-1){//primeiro pronteiro eh para proxima folha
             /*INSERIR NESTA FOLHA*/
             int contador = qntOcupado;  //contador = primeira posicao vazia
             while(contador>0 && (chaves[contador-1] >= novaChave)){

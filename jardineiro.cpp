@@ -12,7 +12,10 @@ Jardineiro::Jardineiro(){
 // 		cout << "==================" << endl;
 // 		cout << "==================" << endl;
  		this->arvore.inserir( i, new int(i) );
+ 		cout << "Numero de no na arvore: " << arvore.getNumeroNo() << endl;
  	}
+
+
 
 	this->executar();
 }
@@ -117,7 +120,8 @@ void Jardineiro::MostrarBuscarElemento(){
 	int* resultado = this->arvore.buscar(chave);
 
 	// imprime resultado
-	cout << "Imprimindo resultado: " <<*resultado<< endl;
+	if(resultado!=NULL)
+        cout << "Imprimindo resultado: " <<*resultado<< endl;
 }
 
 void Jardineiro::MostrarBuscarIntervalo(){

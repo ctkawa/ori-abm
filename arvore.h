@@ -15,7 +15,7 @@ struct nivelNo {
 class Arvore{
     private:
 		No* ptrRaiz;
-		int ordem;  //Numero de ponteiros no no
+		int ordem;  //Numero maximo de ponteiros no no
 		int qtdNo;
 	public:
 		Arvore();
@@ -27,6 +27,9 @@ class Arvore{
 		void abrir();
 		void montaVetorImpressao(nivelNo[], No *esse, int &k, int level);
 		void incQtdNo();
+
+		int getNumeroNo();
+
 		~Arvore();
 };
 
